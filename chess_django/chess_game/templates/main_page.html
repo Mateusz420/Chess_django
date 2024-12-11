@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Site</title>
+    <!-- Local chessboard.js styles -->
+    <link rel="stylesheet" href="{% static 'chessboard/chessboard-1.0.0.min.css' %}">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            background-color: #243E63;
+            color: white;
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 20px;
+        }
+        .sidebar button {
+            background-color: #3A579A;
+            border: none;
+            padding: 15px;
+            color: white;
+            font-size: 18px;
+            margin: 10px 0;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .sidebar button:hover {
+            background-color: #506EA6;
+        }
+        .content {
+            background-color: #F4F4F4;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .chessboard {
+            background-color: #FFFFFF;
+            border: 1px solid #DDD;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <button>ZALOGUJ</button>
+            <button>GRAJ</button>
+            <button>RANKING</button>
+            <button>CHESS NEWS</button>
+        </div>
+        <div class="content">
+            <div class="chessboard" id="chessboard"></div>
+        </div>
+    </div>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Local chessboard.js script -->
+    <script src="{% static 'chessboard/chessboard-1.0.0.min.js' %}"></script>
+    <script>
+        // Initialize Chessboard.js
+        var board = Chessboard('chessboard', {
+            position: 'start',
+            draggable: true,
+            pieceTheme: '/static/chessboard/img/chesspieces/wikipedia/{piece}.png'
+        });
+    </script>
+</body>
+</html>
